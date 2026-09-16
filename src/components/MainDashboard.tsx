@@ -2,18 +2,18 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { 
-  ClipboardCheck, 
-  LogOut, 
-  Calendar, 
-  Droplets, 
-  Utensils, 
-  Settings, 
-  MessageSquare, 
-  Key, 
-  FileText, 
-  Users, 
-  BarChart2, 
+import {
+  ClipboardCheck,
+  LogOut,
+  Calendar,
+  Droplets,
+  Utensils,
+  Settings,
+  MessageSquare,
+  Key,
+  FileText,
+  Users,
+  BarChart2,
   HelpCircle,
   Search,
   Bell
@@ -52,7 +52,7 @@ const generateFloorRooms = (start: number, count: number) => {
     if (num % 13 === 0) status = ROOM_STATUS.DIRTY;
     if (num % 19 === 0) status = ROOM_STATUS.MAINTENANCE;
     if (num === 110 || num === 210) status = ROOM_STATUS.BLOCKED;
-    
+
     return { number: num, status };
   });
 };
@@ -70,10 +70,10 @@ export default function MainDashboard() {
       <div className="topbar" style={{ display: 'flex', justifyContent: 'space-between' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
           <div style={{ background: '#000', color: 'white', padding: '8px', borderRadius: '4px', fontWeight: 'bold' }}>
-            Raintech<br/><span style={{ fontSize: '0.7rem', fontWeight: 'normal'}}>HOTEL</span>
+            Raintech<br /><span style={{ fontSize: '0.7rem', fontWeight: 'normal' }}>HOTEL</span>
           </div>
         </div>
-        
+
         <div className="search-bar" style={{ width: '400px' }}>
           <Search size={16} color="var(--text-muted)" />
           <input type="text" placeholder="Search guests, rooms, reservations, staff..." onKeyDown={(e) => e.key === 'Enter' && toast('Searching...')} />
@@ -82,7 +82,7 @@ export default function MainDashboard() {
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
           <div style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>
-            📅 Thu, Jul 23, 2026 | 9:30 AM
+            Thu, Jul 23, 2026 | 9:30 AM
           </div>
           <button className="btn btn-primary" style={{ borderRadius: '20px' }} onClick={() => toast.success('Quick Actions opened')}>$ Quick Actions</button>
           <Bell size={20} color="var(--text-muted)" style={{ cursor: 'pointer' }} onClick={() => toast('No new notifications')} />
@@ -92,16 +92,16 @@ export default function MainDashboard() {
 
       <div style={{ padding: '24px', maxWidth: '1400px', margin: '0 auto' }}>
         <h1 style={{ fontSize: '1.5rem', marginBottom: '20px' }}>Main Dashboard</h1>
-        
+
         {/* Top Grid: Actions & Overview */}
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 300px', gap: '20px', marginBottom: '20px' }}>
-          
+
           {/* Action Tiles */}
           <div className="grid-6">
             {DASHBOARD_TILES.map((tile, idx) => (
-              <div 
-                key={idx} 
-                className="dashboard-tile" 
+              <div
+                key={idx}
+                className="dashboard-tile"
                 onClick={() => {
                   if (tile.action === 'checkin') {
                     router.push('/checkin');
@@ -154,7 +154,7 @@ export default function MainDashboard() {
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 300px', gap: '20px' }}>
             {/* Floors */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-              
+
               <div style={{ display: 'flex', gap: '12px' }}>
                 <div className="floor-label">Floor 1</div>
                 <div>
@@ -190,13 +190,13 @@ export default function MainDashboard() {
 
             {/* Total Rooms Dial */}
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-               <div className="progress-dial">
-                 <div className="progress-inner">
-                   <div style={{ fontSize: '1.8rem', fontWeight: 'bold' }}>200</div>
-                   <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Rooms Total</div>
-                 </div>
-               </div>
-               <div style={{ marginTop: '12px', fontWeight: '500' }}>4% Occupied</div>
+              <div className="progress-dial">
+                <div className="progress-inner">
+                  <div style={{ fontSize: '1.8rem', fontWeight: 'bold' }}>200</div>
+                  <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Rooms Total</div>
+                </div>
+              </div>
+              <div style={{ marginTop: '12px', fontWeight: '500' }}>4% Occupied</div>
             </div>
           </div>
 
@@ -216,7 +216,7 @@ export default function MainDashboard() {
             <h3 style={{ fontSize: '1.1rem', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
               <LogOut size={20} /> Going to Vacate Rooms
             </h3>
-            
+
             <div className="grid-2">
               <div style={{ display: 'flex', gap: '12px', border: '1px solid var(--border-color)', padding: '12px', borderRadius: '8px' }}>
                 <div style={{ width: '80px', height: '60px', backgroundColor: '#ddd', borderRadius: '4px' }}></div>
@@ -248,8 +248,8 @@ export default function MainDashboard() {
                   <option>101</option>
                   <option>102</option>
                 </select>
-                <button 
-                  className="btn btn-secondary" 
+                <button
+                  className="btn btn-secondary"
                   style={{ width: '100%', color: 'var(--error)', backgroundColor: '#fff0f0', border: '1px solid #ffd0d0' }}
                   onClick={() => toast.success('All dirty rooms set to cleaning status!')}
                 >
@@ -257,12 +257,12 @@ export default function MainDashboard() {
                 </button>
               </div>
               <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-                <button 
-                  className="btn" 
+                <button
+                  className="btn"
                   style={{ backgroundColor: '#a3b18a', color: '#1a3a2a', border: '1px solid #8e9e76', height: '60px', width: '100%' }}
                   onClick={() => toast.success('Room marked as ready to serve!')}
                 >
-                  Cleaning done, ready<br/>to serve
+                  Cleaning done, ready<br />to serve
                 </button>
                 <button className="btn btn-secondary" style={{ width: '100%' }} onClick={() => toast('Viewing maintenance logs')}>
                   View All Maintenance
