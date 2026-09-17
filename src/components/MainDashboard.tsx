@@ -67,26 +67,25 @@ export default function MainDashboard() {
 
   return (
     <div className="dashboard-wrapper">
-      <div className="topbar" style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-          <div style={{ background: '#000', color: 'white', padding: '8px', borderRadius: '4px', fontWeight: 'bold' }}>
-            Raintech<br /><span style={{ fontSize: '0.7rem', fontWeight: 'normal' }}>HOTEL</span>
+      <div className="topbar" style={{ justifyContent: 'space-between' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <div style={{ color: 'white', fontWeight: 'bold', fontSize: '0.95rem', lineHeight: 1.2 }}>
+            Raintech <span style={{ fontSize: '0.7rem', fontWeight: 'normal', opacity: 0.7 }}>HOTEL</span>
           </div>
         </div>
 
-        <div className="search-bar" style={{ width: '400px' }}>
-          <Search size={16} color="var(--text-muted)" />
-          <input type="text" placeholder="Search guests, rooms, reservations, staff..." onKeyDown={(e) => e.key === 'Enter' && toast('Searching...')} />
-          <span style={{ fontSize: '0.8rem', color: '#aaa' }}>Ctrl K</span>
+        <div className="search-bar" style={{ width: '360px' }}>
+          <Search size={15} color="rgba(255,255,255,0.5)" />
+          <input type="text" placeholder="Search guests, rooms, reservations..." onKeyDown={(e) => e.key === 'Enter' && toast('Searching...')} />
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-          <div style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>
-            Thu, Jul 23, 2026 | 9:30 AM
+        <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+          <div style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.6)' }}>
+            Thu, Jul 23, 2026
           </div>
-          <button className="btn btn-primary" style={{ borderRadius: '20px' }} onClick={() => toast.success('Quick Actions opened')}>$ Quick Actions</button>
-          <Bell size={20} color="var(--text-muted)" style={{ cursor: 'pointer' }} onClick={() => toast('No new notifications')} />
-          <div style={{ width: '32px', height: '32px', borderRadius: '50%', backgroundColor: '#ccc', cursor: 'pointer' }} onClick={() => toast('Profile menu opened')}></div>
+          <button className="btn" style={{ borderRadius: '16px', padding: '5px 14px', fontSize: '0.78rem', backgroundColor: 'rgba(255,255,255,0.15)', border: '1px solid rgba(255,255,255,0.2)' }}>Quick Actions</button>
+          <Bell size={18} color="rgba(255,255,255,0.7)" style={{ cursor: 'pointer' }} />
+          <div style={{ width: '28px', height: '28px', borderRadius: '50%', backgroundColor: 'rgba(255,255,255,0.2)', cursor: 'pointer', border: '1.5px solid rgba(255,255,255,0.4)' }}></div>
         </div>
       </div>
 
@@ -94,7 +93,7 @@ export default function MainDashboard() {
         <h1 style={{ fontSize: '1.5rem', marginBottom: '20px' }}>Main Dashboard</h1>
 
         {/* Top Grid: Actions & Overview */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 300px', gap: '20px', marginBottom: '20px' }}>
+        <div className="dashboard-top-grid">
 
           {/* Action Tiles */}
           <div className="grid-6">
@@ -108,7 +107,7 @@ export default function MainDashboard() {
                   } else if (tile.action === 'checkout') {
                     router.push('/checkout');
                   } else {
-                    toast(`Opening ${tile.label} module...`, { icon: '🚀' });
+                    toast(`Opening ${tile.label} module...`);
                   }
                 }}
                 style={{ cursor: tile.action ? 'pointer' : 'default' }}
@@ -140,7 +139,7 @@ export default function MainDashboard() {
               </div>
               <div className="overview-box" style={{ backgroundColor: '#e6f4ea' }}>
                 <div className="overview-label">Revenue Today</div>
-                <div className="overview-value">₹0</div>
+                <div className="overview-value">Rs. 0</div>
               </div>
             </div>
           </div>
@@ -151,7 +150,7 @@ export default function MainDashboard() {
           <h3 style={{ fontSize: '1.1rem', marginBottom: '4px' }}>Room Status - Interactive Floor View</h3>
           <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginBottom: '20px' }}>50 rooms across your property</p>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 300px', gap: '20px' }}>
+          <div className="floor-view-grid">
             {/* Floors */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
 
